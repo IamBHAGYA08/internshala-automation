@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Auto-Apply for Internships</h1>
+    <form method="POST">
+        <label for="internship_id">Internship ID</label>
+        <input type="text" id="internship_id" name="internship_id" required>
+        <button type="submit">Apply</button>
+    </form>
+{% endblock %}

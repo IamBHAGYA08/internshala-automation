@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Resume Screening</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="resume">Upload Resume</label>
+        <input type="file" id="resume" name="resume" required>
+        <button type="submit">Screen Resume</button>
+    </form>
+{% endblock %}

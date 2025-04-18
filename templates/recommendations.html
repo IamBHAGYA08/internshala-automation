@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>AI-Powered Recommendations</h1>
+    <p>Here are some internships recommended based on your profile and preferences:</p>
+    <ul>
+        {% for internship in recommended_internships %}
+            <li>{{ internship.title }} - {{ internship.company }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

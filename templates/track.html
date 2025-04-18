@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Track Your Applications</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Internship</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+                <tr>
+                    <td>{{ application.internship.title }}</td>
+                    <td>{{ application.status }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

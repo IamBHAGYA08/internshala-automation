@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+    <h2>Recommended Internships for You</h2>
+    <ul>
+        {% for internship in recommendations %}
+            <li>
+                <a href="{{ url_for('apply', internship_id=internship.id) }}">{{ internship.title }}</a>
+                - {{ internship.company }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

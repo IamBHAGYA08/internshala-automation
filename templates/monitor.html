@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Platform Monitoring and Alerts</h1>
+    <p>Status of the platform:</p>
+    <ul>
+        <li>Last updated: {{ last_updated }}</li>
+        <li>Active internships: {{ active_internships }}</li>
+    </ul>
+
+    <h2>Alerts</h2>
+    <ul>
+        {% for alert in alerts %}
+            <li>{{ alert }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
