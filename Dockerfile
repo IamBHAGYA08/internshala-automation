@@ -1,20 +1,20 @@
-# Step 1: Use the official Python image as the base image
-FROM python:3.9-slim
+FROM python:3.10
 
-# Step 2: Set the working directory in the container
+# Install system dependencies for mysqlclient
+RUN apt-get update && apt-get install -y \
+    default-libmysqlclient-dev \
+    build-essential \
+    pkg-config
+
+# Set work directory
 WORKDIR /app
 
-# Step 3: Copy the requirements.txt into the container
-COPY requirements.txt /app/
-
-# Step 4: Install the dependencies inside the container
+# Install Python dependencies
+COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Step 5: Copy the entire project into the container
-COPY . /app/
+# Copy rest of the app
+COPY . .
 
-# Step 6: Expose the port the app runs on
-EXPOSE 5000
-
-# Step 7: Define the command to run the app
-CMD ["python", "run.py"]
+# Expose port and run Flask
+CMD ["flask", "run", "--host=0.0.0.0"]

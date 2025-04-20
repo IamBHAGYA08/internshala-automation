@@ -1,30 +1,36 @@
-version: '3.8'
+
 
 services:
-  web:
+  app:
     build: .
-    command: python run.py
-    volumes:
-      - .:/app
+    container_name: flask-app
+    restart: unless-stopped
     ports:
       - "5000:5000"
     depends_on:
-      - db
+      - mysql-server
     environment:
       - FLASK_ENV=development
-      - FLASK_APP=run.py
+      - DB_HOST=mysql-server
+      - DB_USER=internuser
+      - DB_PASSWORD=internpass
+      - DB_NAME=internshala_db
+    volumes:
+      - .:/app
 
-  db:
+  mysql-server:
     image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: internshala_automation
-      MYSQL_USER: user
-      MYSQL_PASSWORD: userpassword
+    container_name: mysql-server
+    restart: unless-stopped
     ports:
       - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: internshala_db
+      MYSQL_USER: internuser
+      MYSQL_PASSWORD: internpass
     volumes:
-      - db_data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
 
 volumes:
-  db_data:
+  mysql-data:

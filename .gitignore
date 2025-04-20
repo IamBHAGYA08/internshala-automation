@@ -1,0 +1,23 @@
+# Python
+*.pyc
+__pycache__/
+
+# Flask
+instance/
+*.db
+*.sqlite
+
+# Environment variables
+.env
+
+# Virtual Environment
+venv/
+.env/
+
+# IDEs
+.vscode/
+.idea/
+
+# Docker
+*.docker
+.docker/

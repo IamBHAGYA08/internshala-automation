@@ -1,29 +1,24 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_pymongo import PyMongo
-from flask_mail import Mail
-from flask_login import LoginManager
-from config import Config
+from .extensions import db
+from .models import User, Internship, Application, Alert
+from .routes import main_bp  # Import blueprint for routes
+from flask_migrate import Migrate
 
-# Initialize extensions
-db = SQLAlchemy()
-mongo = PyMongo()
-mail = Mail()
-login_manager = LoginManager()
 
-def create_app(config_class=Config):
+def create_app():
     app = Flask(__name__)
-    app.config.from_object(config_class)
-
+    
+    # Configurations (you can create a config file for this)
+    app.config['SECRET_KEY'] = 'your-secret-key'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://bhagya:bhagyapassword@localhost/dbname'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
     # Initialize extensions
     db.init_app(app)
-    mongo.init_app(app)
-    mail.init_app(app)
-    login_manager.init_app(app)
+    migrate = Migrate(app, db)
 
+    
     # Register blueprints
-    from app.routes import main_bp
-    app.register_blueprint(main_bp)
-
+    app.register_blueprint(main_bp)  # Replace with the actual blueprint you're using
+    
     return app
-

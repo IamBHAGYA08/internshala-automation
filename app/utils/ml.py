@@ -1,5 +1,15 @@
-def resume_screening(resume_file):
-    # Logic for processing the resume and extracting skills (this would use NLP or ML).
-    # Dummy return (replace with actual resume parsing and skill extraction).
-    skills = ["Python", "Machine Learning", "Data Science"]
-    return skills
+# app/utils/ml.py
+
+def process_resume(resume_data):
+    # Your implementation to process resumes
+    pass
+# app/utils/ml.py
+
+def get_skill_match(resume_data, job_description):
+    # Your implementation for skill matching
+    pass
+# app/utils/ml.py
+
+def resume_screening(resume_data):
+    # Your implementation for screening a resume
+    pass

@@ -9,7 +9,7 @@ class Config:
 
     # SQLAlchemy (MySQL) configuration
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'mysql://username:password@localhost/internshala_automation'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'mysql+pymysql://bhagya:bhagyapassword@localhost:3306/internshala'
 
     # MongoDB configuration (optional)
     MONGO_URI = os.environ.get('MONGO_URI') or 'mongodb://localhost:27017/internshala_automation'

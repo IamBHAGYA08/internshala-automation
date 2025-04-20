@@ -13,7 +13,7 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
 
-class InternshipApplicationForm(FlaskForm):
+class ApplicationForm(FlaskForm):
     internship_id = SelectField('Internship', coerce=int, choices=[])
     resume = StringField('Resume URL', validators=[DataRequired()])
     cover_letter = TextAreaField('Cover Letter', validators=[DataRequired(), Length(min=50)])
@@ -23,3 +23,7 @@ class ApplicationStatusForm(FlaskForm):
     application_id = SelectField('Application', coerce=int, choices=[])
     status = SelectField('Status', choices=[('Applied', 'Applied'), ('Accepted', 'Accepted'), ('Rejected', 'Rejected')], default='Applied')
     submit = SubmitField('Update Status')
+class InternshipForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired(), Length(min=5, max=100)])
+    description = TextAreaField('Description', validators=[DataRequired(), Length(min=10)])
+    submit = SubmitField('Post Internship')
